@@ -1,0 +1,38 @@
+<div id="product-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title right">New Post</h4>
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+      </div>
+      <%= form_for(@post, remote: true)  do |form| %>
+          <% if @post.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+                <ul>
+                  <% @post.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+          <div class="modal-body">
+            <div class="form-group">
+              <%= form.text_field :title, id: :post_tile, class: "form-control input-lg", placeholder: "title" %>
+            </div>
+            <div class="form-group">
+              <%= form.file_field :image, class: "form-control input-lg", placeholder: "Imagen" %>
+            </div>
+            <div class="form-group">
+              <%= form.text_area :body, id: :post_body, class: "form-control input-lg", placeholder: "New Post" %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <%= form.submit class: "btn btn-primary center" %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="container posts col-md-6" id="posts">
+  <p id="notice"><%= notice %></p>
+  <%= render @posts %>
+</div>
+<% unless @posts.empty? or @posts.nil? %>
+    <%= will_paginate @posts %>
+<% end %>
+
+

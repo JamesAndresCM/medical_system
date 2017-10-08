@@ -1,0 +1,38 @@
+<h2>Comments</h2>
+<span>(*edit on click field comentario*)</span>
+</br>
+<div class="input-group search">
+  <input type="search" id="search" class="form-control" placeholder="Ingrese Nombre Usuario">
+  <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Buscar</button>
+      </span>
+</div>
+</br>
+
+<table class="table-striped table table-responsive">
+  <thead>
+    <tr>
+      <th>Comentario</th>
+      <th>User</th>
+      <th>Post</th>
+      <th class="center">Fecha Creación</th>
+      <th>Opcion</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr id="del_comment_<%= comment.id %>">
+        <td><%= best_in_place comment ,:body ,:as => :textarea %></td>
+        <td><%= comment.user.username %></td>
+        <td><%= comment.post.body %></td>
+        <td style="width: 220px;"><%= comment.created_at.strftime("%d-%m-%Y a las %H:%M:%S") %></td>
+        <td>
+          <%= button_to 'Delete', comment_path(comment),class:'btn btn-sm btn-danger', remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
