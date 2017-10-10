@@ -1,7 +1,7 @@
 # Photo Album (especie de blog)
 
 # TL;DR
-Un Usuario tiene un rol, puede crear comentarios y otros usuarios se lo pueden comentar.
+Un Usuario tiene un rol, puede crear comentarios, editar perfil y otros usuarios pueden comentar publicaciones.
 
 # Instalación
 Luego de clonar el proyecto :
@@ -21,7 +21,7 @@ Luego de clonar el proyecto :
 
 3 tipos de usuarios, admin, supervisor y usuario normal.
 
-admin@domain.com , contraseña : admin123
-supervisor@domain.com , contraseña : supervisor123
-user@domain.com, contraseña : user123
+* admin@domain.com , contraseña : admin123
+* supervisor@domain.com , contraseña : supervisor123
+* user@domain.com, contraseña : user123
 
