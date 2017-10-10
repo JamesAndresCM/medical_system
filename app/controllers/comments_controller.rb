@@ -86,7 +86,7 @@ class CommentsController < ApplicationController
 
     #filtro para role distinto a supervisor
     def redirect_no_permit
-      unless current_user.supervisor_role?
+      unless current_user.role.supervisor_role?
         respond_to do |format|
           format.html { redirect_to root_path }
         end
