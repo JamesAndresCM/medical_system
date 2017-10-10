@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  superadmin_role: false
+  supervisor_role: false
+  user_role: false
+  user: one
+
+two:
+  superadmin_role: false
+  supervisor_role: false
+  user_role: false
+  user: two
