@@ -1,24 +1,27 @@
-# README
+# Photo Album (especie de blog)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# TL;DR
+Un Usuario tiene un rol, puede crear comentarios y otros usuarios se lo pueden comentar.
 
-Things you may want to cover:
+# Instalación
+Luego de clonar el proyecto :
+* cd photo_album
 
-* Ruby version
+* bundle install
 
-* System dependencies
+* configurar usuario y base de dato en el archivo config/database.yml , luego iniciar servicio mysql
 
-* Configuration
+* rails db:create
 
-* Database creation
+* rails db:migrate
 
-* Database initialization
+* rails db:seed
 
-* How to run the test suite
+* rails s
 
-* Services (job queues, cache servers, search engines, etc.)
+3 tipos de usuarios, admin, supervisor y usuario normal.
 
-* Deployment instructions
+admin@domain.com , contraseña : admin123
+supervisor@domain.com , contraseña : supervisor123
+user@domain.com, contraseña : user123
 
-* ...
