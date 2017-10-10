@@ -17,7 +17,7 @@ Luego de clonar el proyecto :
 
 * rails db:seed
 
-* rails s
+* rails server
 
 3 tipos de usuarios, admin, supervisor y usuario normal.
 
@@ -25,3 +25,10 @@ Luego de clonar el proyecto :
 * supervisor@domain.com , contraseña : supervisor123
 * user@domain.com, contraseña : user123
 
+<img src="https://i.imgur.com/bEfJkIP.png" />
+
+<img src="https://i.imgur.com/6res4Jx.png" />
+
+<img src="https://i.imgur.com/n1RmQk4.png" />
+
+<img src="https://i.imgur.com/0jZheSp.png" />
