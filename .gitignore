@@ -17,3 +17,7 @@
 /yarn-error.log
 
 .byebug_history
+.idea/photo_album.iml
+.idea/workspace.xml
+/config/database.yml
+/public/system/
