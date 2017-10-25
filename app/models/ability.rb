@@ -39,12 +39,12 @@ class Ability
         can :dashboard                  # allow access to dashboard
       #usuario supervisor, puede ejecutar tareas administrativas en los controlladores
     elsif user.role.supervisor_role?
-        can :manage, Post
-        can :manage, Comment
+        #can :manage, Post
+        #can :manage, Comment
       #usuario normal puede ejecutar las acciones del crud solo para el
     elsif user.role.user_role?
-        can :crud, Post , user_id: user.id
-        can :crud, Comment, user_id: user.id
+        #can :crud, Post , user_id: user.id
+        #can :crud, Comment, user_id: user.id
         can :crud, User, user_id: user.id
     end
   end

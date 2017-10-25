@@ -12,9 +12,7 @@ devise_scope :user do
     authenticated :user do
     root  'dashboard#index'
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-    resources :posts
-    resources :comments
-    resources :profile, as: :users, only: [:show, :update]
+        resources :profile, as: :users, only: [:show, :update]
     get '*path' => redirect('/')
   end
   unauthenticated do

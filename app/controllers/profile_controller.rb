@@ -4,7 +4,6 @@ class ProfileController < ApplicationController
 
   def show
     @profile = @user
-    @posts = @user.posts.ordenados
   end
 
 

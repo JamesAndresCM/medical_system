@@ -20,10 +20,6 @@
           <label>Username</label>
           <span style="color: black;"><%= best_in_place_if current_user == @user, @user, :username %></span>
         </li>
-        <li>
-          <label>Posts</label>
-          <span style="color: black;"><%= @user.posts.count %></span>
-        </li>
       </ul>
       <hr class="border-hr">
       <% if current_user == @user %>
@@ -45,4 +41,3 @@
   </div>
 </div>
 <br>
-<legend class="center" style="color: #7a8084">Posts</legend>

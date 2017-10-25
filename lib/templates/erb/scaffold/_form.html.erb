@@ -1,0 +1,36 @@
+<%%= form_for(@<%= singular_table_name %>, html: { class:"webkit-center", role: "form" }) do |f| %>
+<%% if @<%= singular_table_name %>.errors.any? %>
+<div class="alert alert-danger alert-dismissable" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <h4><%%= pluralize(@<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h4>
+
+  <ul>
+    <%% @<%= singular_table_name %>.errors.full_messages.each do |msg| %>
+    <li><%%= msg %></li>
+    <%% end %>
+  </ul>
+</div>
+<%% end %>
+
+<form class="form-horizontal">
+<% attributes.each do |attribute| -%>
+      <div class="container">
+        <div class="row">
+        <div class="form-group form-group-sm col-sm-10">
+          <div class="row">
+      <%%= f.label :<%= attribute.name %>, class: "col-sm-5 col-form-label right" %>
+      <div class="col-sm-4">
+        <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, class: "form-control col-sm-10" %>
+      </div>
+        </div>
+        </div>
+        </div>
+      </div>
+<% end -%>
+<div class="form-group webkit-center">
+  <div class="actions col-md-4">
+    <%%= f.submit class: "btn btn-sm btn-success" %>
+  </div>
+</div>
+</form>
+<%% end %>

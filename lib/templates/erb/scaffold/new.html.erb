@@ -1,0 +1,6 @@
+<legend class="center">New <%= singular_table_name.titleize %></legend>
+
+<%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>
+<div class="center">
+<%%= link_to 'Back', <%= index_helper %>_path, class:"btn btn-sm btn-primary" %>
+</div>

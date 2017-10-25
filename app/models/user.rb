@@ -11,9 +11,6 @@ class User < ApplicationRecord
   #validates :avatar, presence: true
   #validates :cover, presence: true
 
-  has_many :posts, dependent: :destroy
-  has_many :comments
-
   #un usuario puede tener un solo rol
   has_one :role
 

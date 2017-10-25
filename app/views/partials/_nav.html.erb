@@ -15,10 +15,8 @@
         <% if current_user.role.superadmin_role?  %>
             <li class="nav-item"><a class="nav-link margin-index"><%= link_to "Admin", rails_admin.dashboard_path,method: :get,style:"text-decoration: none; margin: 0px; color: white;" %></a></li>
         <% end %>
-        <li class="nav-item"><a class="nav-link margin-index"><%= link_to "Post", new_post_path, :remote => true, "data-toggle" => "modal", "data-target" => "my-modal" ,style:"text-decoration: none; color: white;" %></a></li>
         <% if current_user.role.supervisor_role? %>
-        <li class="nav-item"><a class="nav-link margin-index" href="#about"><%= link_to "Posts", posts_path, method: :get,style:"text-decoration: none; color: white;" %></a></li>
-            <li class="nav-item"><a class="nav-link margin-index" href="#about" style="margin-left: 100px;"><%= link_to "Comments", comments_path, method: :get,style:"text-decoration: none; color: white;" %></a></li>
+        <li class="nav-item"><a class="nav-link" style="color: white;" href="#about">*Only supervisor see this*</a></li>
         <% end %>
         <li class="nav-item"><a class="nav-link margin-index"><%= link_to "Profile", user_path(current_user), method: :get,style:"text-decoration: none; color: white;" %></a></li>
         <li class="nav-item"><a class="nav-link margin-index"><%= link_to "Logout", logout_path, method: :delete,style:"text-decoration: none; color: white;" %></a></li>

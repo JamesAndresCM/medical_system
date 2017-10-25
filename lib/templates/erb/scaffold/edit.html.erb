@@ -1,0 +1,12 @@
+<div class="center page-header">
+  <h1>Editing <%= singular_table_name %></h1>
+</div>
+
+<%%= render 'form' %>
+<br>
+<div class="center">
+<%%= link_to <%= index_helper %>_path, class: 'btn btn-sm btn-primary' do %>
+<span class="glyphicon glyphicon-list-alt"></span>
+Back
+<%% end %>
+</div>
