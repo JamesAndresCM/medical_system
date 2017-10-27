@@ -17,6 +17,8 @@ devise_scope :user do
   end
   unauthenticated do
      root 'devise/sessions#new' , as: :unauthenticated_root
+     #si se desea tener una pagina principal, a modo que el index no sea el login 
+     #root 'home#index'
   end
   get '*path' => redirect('/404')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
