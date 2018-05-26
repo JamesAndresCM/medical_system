@@ -1,3 +1,5 @@
 <h1>Home</h1>
-
-<a><%= link_to "sign in", sign_in_path %></a>
+<% if current_user.nil? %>
+  <%= link_to "Register",new_user_registration_path %>
+  <%= link_to "Login", new_user_session_path %>
+<%end%>
