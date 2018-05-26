@@ -1,28 +1,18 @@
 <% if user_signed_in? %>
-<nav class="navbar navbar-expand-md navbar-dark nav-bar-bg navbar-custom navbar sticky-top">
-  <div class="container-fluid d-inline-flex">
-
-    <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <a class="navbar-brand justify-cotent-start"><%= link_to image_tag("logo.svg", class:"img_nav"), root_path, method: :get %></a>
-    <a class="navbar-brand justify-cotent-start"><%= link_to image_tag(current_user.avatar.url(:medium), class:"img_nav_profile"), user_path(current_user), method: :get %></a>
-    <legend class="font-img"> <%= current_user.username.capitalize%></legend>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="nav navbar-nav ml-auto" style="float: left">
-        <% if current_user.role.superadmin_role?  %>
-            <li class="nav-item"><a class="nav-link margin-index"><%= link_to "Admin", rails_admin.dashboard_path,method: :get,style:"text-decoration: none; margin: 0px; color: white;" %></a></li>
-        <% end %>
-        <% if current_user.role.supervisor_role? %>
-        <li class="nav-item"><a class="nav-link" style="color: white;" href="#about">*Only supervisor see this*</a></li>
-        <% end %>
-        <li class="nav-item"><a class="nav-link margin-index"><%= link_to "Profile", user_path(current_user), method: :get,style:"text-decoration: none; color: white;" %></a></li>
-        <li class="nav-item"><a class="nav-link margin-index"><%= link_to "Logout", logout_path, method: :delete,style:"text-decoration: none; color: white;" %></a></li>
-
-      </ul>
+  <nav class="navbar navbar-expand-md navbar-dark nav-bar-bg navbar-custom navbar sticky-top">
+    <div class="container-fluid d-inline-flex">
+      <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand justify-cotent-start"><%= link_to image_tag("logo.svg", class:"img_nav"), root_path, method: :get %></a>
+      <a class="navbar-brand justify-cotent-start"><%= link_to image_tag(current_user.avatar.url, class:"img_nav_profile"), edit_user_registration_path, method: :get %></a>
+      <legend class="font-img"> <%= current_user.username.capitalize%></legend>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <%= usertype_helper %>
+          <a class="nav-link margin-index"><%= link_to "Profile", edit_user_registration_path, method: :get,style:"text-decoration: none; color: white;" %></a>
+          <a class="nav-link margin-index"><%= link_to "Logout", destroy_user_session_path, method: :delete,style:"text-decoration: none; color: white;" %></a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 <% end %>
