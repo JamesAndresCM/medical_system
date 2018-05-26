@@ -1,27 +1,17 @@
 Rails.application.routes.draw do
 
-
-devise_scope :user do
-    get "/sign_in" => "devise/sessions#new"
-    get "/sign_up" => "devise/registrations#new", as: "new_user_registration"
-    get "/users" => "devise/registrations#new"
-    delete "/logout" => "devise/sessions#destroy"
-    get "/reset_password" => "devise/passwords#new"
-    get "/users/password" => "devise/passwords#new"
-  
+  devise_scope :user do
+    devise_for :users, path: '', path_names: { edit: 'edit_profile', sign_in: 'sign_in', sign_out: 'logout', sign_up: 'sign_up' }
     authenticated :user do
-    root  'dashboard#index'
-    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-        resources :profile, as: :users, only: [:show, :update]
-    get '*path' => redirect('/')
+      root  'dashboard#index'
+      mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+      get '*path' => redirect('/')
+    end
+    unauthenticated do
+      #si se desea tener una pagina principal, a modo que el index no sea el login
+      #root 'home#index'
+      root to: 'devise/sessions#new'
+    end
+    get '*path' => redirect('/404')
   end
-  unauthenticated do
-     root 'devise/sessions#new' , as: :unauthenticated_root
-     #si se desea tener una pagina principal, a modo que el index no sea el login 
-     #root 'home#index'
-  end
-  get '*path' => redirect('/404')
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-   devise_for :users
-   end
 end
