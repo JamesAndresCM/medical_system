@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   #callback para que se inserte el id del user al crearse en la tabla role
   before_create :set_default_role
+  mount_uploader :avatar, AvatarUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -12,19 +13,15 @@ class User < ApplicationRecord
   #validates :cover, presence: true
 
   #un usuario puede tener un solo rol
-  has_one :role
-
-  #validaciones para cover y avatar
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-
-  has_attached_file :cover, styles: {  medium: "660x300>", thumb: "400x100>" }, default_url: "/images/:style/missing_cover.png"
-  validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/
-
+  has_one :role, dependent: :destroy
 
  #se inserta el id del usuario al ser este creado
   private
   def set_default_role
     self.role ||= Role.create()
+  end
+
+  def avatar_size_validation
+    errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes
   end
 end
