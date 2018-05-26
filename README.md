@@ -1,11 +1,10 @@
-# Themplate for rails start
+# Base para Rails 5
 
 # TL;DR
 Autenticación, autorización, + scaffold personalizado con bootstrap
 
 # Instalación
 Luego de clonar el proyecto :
-* cd photo_album
 
 * bundle install
 
