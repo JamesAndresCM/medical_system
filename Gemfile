@@ -38,10 +38,11 @@ gem 'carrierwave', '~> 1.0'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'best_in_place'
 gem 'cancancan'
 gem 'rails_admin', '~> 1.2'
 gem 'will_paginate'
+gem 'friendly_id', '~> 5.1.0'
+gem 'rename'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

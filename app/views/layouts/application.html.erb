@@ -8,11 +8,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   </head>
-  <%= render "partials/nav" %>
   <body>
-	  <div id="main" class="container">
-	      <%= yield %>
-	  </div>
-    <a href="#" class="scrollToTop"></a>
+  <%= render "partials/nav" %>
+  <br>
+  <br>
+  <div class="container">
+    <div class="flex-xl-nowrap">
+      <% if notice %>
+        <p id="notice" class="alert alert-success center mt-2" role="alert">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <%= notice %>
+        </p>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
+  <a href="#" class="scrollToTop"></a>
   </body>
 </html>

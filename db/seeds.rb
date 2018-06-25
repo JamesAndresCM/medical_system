@@ -8,25 +8,25 @@
 User.destroy_all
 
 User.create!([{
-                   email: "admin@domain.com",
-                   username: "admin",
-                   password: "admin123",
-                   password_confirmation: "admin123"
-               },
-               {
-                   email: "supervisor@domain.com",
-                   username: "supervisor",
-                   password: "supervisor123",
-                   password_confirmation: "supervisor123"
-               },
-               {
-                   email: "user@domain.com",
-                   username: "user",
-                   password: "user123",
-                   password_confirmation: "user123"
-               }])
+               email: 'admin@domain.com',
+               username: 'admin',
+               password: 'admin123',
+               password_confirmation: 'admin123'
+             },
+              {
+                email: 'supervisor@domain.com',
+                username: 'supervisor',
+                password: 'supervisor123',
+                password_confirmation: 'supervisor123'
+              },
+              {
+                email: 'user@domain.com',
+                username: 'user',
+                password: 'user123',
+                password_confirmation: 'user123'
+              }])
 
-Role.find_by(:user_id => 1).update(:superadmin_role => true)
-Role.find_by(:user_id => 2).update(:supervisor_role => true)
+Role.find_by(user_id: 1).update(superadmin_role: true)
+Role.find_by(user_id: 2).update(supervisor_role: true)
 
 p "Created #{User.count} users"

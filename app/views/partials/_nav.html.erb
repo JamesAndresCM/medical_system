@@ -1,18 +1,33 @@
-<% if user_signed_in? %>
-  <nav class="navbar navbar-expand-md navbar-dark nav-bar-bg navbar-custom navbar sticky-top">
-    <div class="container-fluid d-inline-flex">
-      <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand justify-cotent-start"><%= link_to image_tag("logo.svg", class:"img_nav"), root_path, method: :get %></a>
-      <a class="navbar-brand justify-cotent-start"><%= link_to image_tag(current_user.avatar.url, class:"img_nav_profile"), edit_user_registration_path, method: :get %></a>
-      <legend class="font-img"> <%= current_user.username.capitalize%></legend>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <%= usertype_helper %>
-          <a class="nav-link margin-index"><%= link_to "Profile", edit_user_registration_path, method: :get,style:"text-decoration: none; color: white;" %></a>
-          <a class="nav-link margin-index"><%= link_to "Logout", destroy_user_session_path, method: :delete,style:"text-decoration: none; color: white;" %></a>
-      </div>
-    </div>
-  </nav>
-<% end %>
+<header class="navbar navbar-expand-lg navbar-light bg-light fixed-top nav-shadow">
+  <a class="navbar-brand" href="/">Base Rails 5</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-md-auto d-md-flex">
+      <li class="nav-item-active">
+        <a class="nav-link" href="#">Link public</a>
+      </li>
+      <% if user_signed_in? %>
+        <%= usertype_helper%>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link with session</a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand" href="<%= edit_user_registration_path %>"><%= image_tag(current_user.avatar.url, class:"img_nav_profile") %>
+            <span class="username-span"><%= current_user.username %></span></a>
+        </li>
+        <%= options_user %>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link"  href="<%= new_user_session_path %>">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3"  href="<%= new_user_registration_path %>">Create Account</a>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+</header>
