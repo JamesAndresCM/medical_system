@@ -1,0 +1,7 @@
+<% if @doctor.errors.empty? %>
+$("#datatable_doctor").prepend("<%= j render "admin/dashboard/doctor", doctor: @doctor %>")
+$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> Doctor creado con exito").show();
+$('#doctor-modal').modal('hide');
+<% else %>
+alert('<%= @doctor.errors.full_messages[0] %>');
+<% end %>

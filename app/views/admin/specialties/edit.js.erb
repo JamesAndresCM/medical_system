@@ -1,0 +1,4 @@
+$('<%= j render "form", specialty: @specialty, url: admin_specialty_url, title: "Editar" %>').on('hidden.bs.modal', function (e) {
+    $(this).remove();
+    $('.modal-backdrop').remove();
+}).modal();

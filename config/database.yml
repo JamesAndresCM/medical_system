@@ -9,17 +9,17 @@ default: &default
 
 development:
   <<: *default
-  database: start_rails_development
+  database: clinic_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: start_rails_test
+  database: clinic_test
 
 production:
   <<: *default
-  database: start_rails_production
+  database: clinic_production
   username: start_rails
   password: <%= ENV['START_RAILS_DATABASE_PASSWORD'] %>

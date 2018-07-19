@@ -1,0 +1,8 @@
+<ul class="list-group ml-3 mb-3 shadow-style">
+  <li class="list-group-item" id="del_specialty_<%= specialty.id %>">
+    <%= specialty.name.capitalize %>
+      <hr>
+      <%= link_to fa_icon("pencil-square-o") ,edit_admin_specialty_path(specialty.id), remote: true %>
+      <%= link_to fa_icon("trash") ,admin_specialty_path(specialty.id), remote: true, method: :delete, style: 'color: red', data: { confirm: 'Are you sure?' } %>
+  </li>
+</ul>

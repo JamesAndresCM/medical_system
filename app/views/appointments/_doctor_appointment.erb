@@ -1,0 +1,15 @@
+<tr id="medical_card" class="text-capitalize">
+  <td><%= doctor_appointment.rut %></td>
+  <td><%= doctor_appointment.username %></td>
+  <td><%= doctor_appointment.last_name %></td>
+  <td><%= doctor_appointment.last_name_mother %></td>
+  <td><%= doctor_appointment.phone_number %></td>
+  <td><%= doctor_appointment.appointment_date %></td>
+  <td><%= doctor_appointment.start_time.to_s(:time) +"-"+ doctor_appointment.end_time.to_s(:time) %></td>
+  <% if doctor_appointment.id.nil? %>
+      <td style="text-align: center"><%= link_to "crear ficha paciente", new_medical_card_path(user_id: doctor_appointment.user.id),remote: true , class: "btn btn-sm btn-secondary"%></td>
+  <% else %>
+    <td style="text-align: center"><%= link_to fa_icon("address-book",style: "margin: 5px"), medical_card_path(doctor_appointment.id), style: 'color: gray' %>
+      <%= link_to fa_icon("pencil-square-o", style: "margin: 5px"), edit_medical_card_path(doctor_appointment.id), remote: true %></td>
+  <% end %>
+</tr>

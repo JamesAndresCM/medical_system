@@ -1,0 +1,7 @@
+<% if @specialty.errors.empty? %>
+$("#specialties").prepend("<%= j render "admin/specialties/specialty", specialty: @specialty %>")
+$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> Especialidad creada con exito").show();
+$('#specialty-modal').modal('hide');
+<% else %>
+alert('<%= @specialty.errors.full_messages[0] %>');
+<% end %>

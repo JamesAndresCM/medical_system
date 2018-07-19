@@ -1,0 +1,13 @@
+<tr id="del_user_<%= user.id %>" style="text-align: justify">
+  <td><%= user.username.capitalize %></td>
+  <td><%= user.last_name.capitalize %></td>
+  <td><%= user.last_name_mother.capitalize %></td>
+  <td><%= user.email %></td>
+  <td><%= user.rut %></td>
+  <td><%= user.phone_number %></td>
+  <td><%= user.role.capitalize %></td>
+  <td style="text-align: center">
+  <%= link_to fa_icon("pencil-square-o") ,edit_user_url(user), remote: true %>
+  <%= link_to fa_icon("trash") ,user, remote: true, method: :delete, style: 'color: red', data: { confirm: 'Are you sure?' } %>
+  </td>
+</tr>

@@ -1,0 +1,22 @@
+<h2 class="center mt-3">Mis Pacientes</h2>
+<div class="mt-3 alert alert-success" role="alert" style="display: none;"></div>
+<div class="mt-3 alert alert-danger" role="alert" style="display: none;"></div>
+<div class="mt-3 card shadow-style table-responsive">
+  <div class="card-body">
+    <table id="datatable_patients" class="table table-hover table-responsive" style="border-radius: 4px">
+      <thead>
+      <tr style="color: white; background-color: #2979ff;">
+        <th>Rut Paciente</th>
+        <th>Nombre Paciente</th>
+        <th>Apellido Paciente</th>
+        <th>Apellido Materno</th>
+        <th>Telefono Celular</th>
+        <th>Ficha Médica Paciente</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render partial: "doctor_patients/appointments_patients", collection: @appointments_patients %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div id="prescription-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <legend><%= title %> Prescripcion Médica</legend>
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+      </div>
+      <%= form_for(prescription, url: url, remote: true, html: {class:'container'}) do |f| %>
+        <div class="form-group">
+          <%= f.select :user_id, @patients.collect{ |s| [s.user.username + " " + s.user.last_name + " " + s.user.last_name_mother, s.user.id]},{:prompt => 'Seleccione Usuario'}, {class: 'form-control', required: true}  %>
+        </div>
+        <hr>
+        <div class="form-group">
+          <b><%= f.label :prescripcion_medica_paciente, class: 'col-form-label' %>: </b>
+            <%= f.text_area :descripcion,rows: 5, autofocus: true, class:'form-control', placeholder: 'Escriba aquí la prescripción médica...',required: true %>
+            <small>prescripcion de medicamento ejemplo: (paracetamol c/8 hrs.)</small>
+        </div>
+        <hr>
+        <div class="actions" style="text-align: center">
+          <%= f.submit "#{title} Prescripción",class: 'btn btn-sm btn-success' %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>

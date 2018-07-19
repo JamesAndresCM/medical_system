@@ -1,0 +1,7 @@
+<tr class="text-capitalize">
+  <td><%= prescription_user.doctor.rut %></td>
+  <td><%= prescription_user.doctor.username %> <%= prescription_user.doctor.last_name %> <%= prescription_user.doctor.last_name_mother %></td>
+  <td><%= prescription_user.descripcion %></td>
+  <td><%= prescription_user.doctor.phone_number %></td>
+  <td><%= prescription_user.created_at.strftime("%d/%m/%Y") %></td>
+</tr>

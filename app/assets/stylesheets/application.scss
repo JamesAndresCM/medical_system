@@ -12,7 +12,16 @@
  *
  */
 @import "bootstrap";
+@import "font-awesome";
+@import "bootstrap-datepicker";
+@import "datatables";
+@import "daterangepicker";
 
+
+.img-fractal{
+  background-image: url('/assets/fractal.jpg');
+  background-size : cover;
+}
 
 .img-class{
   width: 520px;
@@ -205,10 +214,77 @@ a[rel=next] {
 }
 
 .username-span{
-  color: darkgray;
+  color: white;
   font-size: 16px;
 }
 
 .dropdown-margin{
   min-width: 0px !important;
+}
+
+.table-fixed {
+  table-layout: fixed;
+  overflow: hidden;
+}
+
+.shadow-style{
+  filter: drop-shadow(5px 1px 5px #666666);
+}
+
+.navbar-custom {
+  background-color: #007bff;
+  .navbar-toggler-icon {
+  background-image:
+          url(
+          "data:image/svg+xml;charset=utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>"
+        )
+  }
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: rgba(255,255,255,.8);
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: #F3EBEA;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ffffff;
+}
+
+.datatable-style-centered{
+  border-radius: 4px;
+  display: inline-table;
+}
+
+$height-footer: 60px;
+
+html {
+  min-height: 100%;
+  position: relative;
+  body {
+    margin-bottom: $height-footer;
+  }
+  #footer {
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    height: $height-footer;
+    background-color: #F2F2F2;
+    .footer-block {
+      margin: 20px 0;
+    }
+  }
+}
+
+.copyleft{
+  font: 18px Arial, sans-serif;
+  display: inline-block;
+  transform: rotate(180deg);
 }

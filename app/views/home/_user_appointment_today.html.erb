@@ -1,0 +1,7 @@
+<tr>
+  <td><%= user_appointment_today.rut %></td>
+  <td><%= user_appointment_today.username %> <%= user_appointment_today.last_name %> <%= user_appointment_today.last_name_mother %></td>
+  <td><%= user_appointment_today.name %></td>
+  <td><%= user_appointment_today.appointment_date.strftime("%d-%m-%Y") %></td>
+  <td><%= user_appointment_today.start_time.strftime("%H:%M") %> <%= user_appointment_today.end_time.strftime("%H:%M") %></td>
+</tr>

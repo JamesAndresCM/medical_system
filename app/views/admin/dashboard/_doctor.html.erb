@@ -1,0 +1,12 @@
+<tr id="del_doctor_<%= doctor.id %>" style="text-align: justify">
+  <td><%= doctor.username.capitalize %></td>
+  <td><%= doctor.last_name.capitalize %> <%= doctor.last_name_mother.capitalize %></td>
+  <td><%= doctor.email %></td>
+  <td><%= doctor.rut %></td>
+  <td><%= doctor.phone_number %></td>
+  <td><%= doctor.name.capitalize %></td>
+  <td style="text-align: center">
+    <%= link_to fa_icon("pencil-square-o") ,edit_doctor_path(doctor), remote: true %>
+    <%= link_to fa_icon("trash") ,doctor, remote: true, method: :delete, style: 'color: red', data: { confirm: 'Are you sure?' } %>
+  </td>
+</tr>

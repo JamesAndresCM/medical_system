@@ -1,0 +1,10 @@
+<% if @doctor.errors.empty? && current_user && current_user.admin? %>
+$('#del_doctor_<%= @doctor.id %>').replaceWith(' <%= j render "admin/dashboard/doctor", doctor: @doctor %>');
+$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> Doctor modificado con exito").show();
+$('#doctor-modal').modal('hide');
+<% elsif @doctor.errors.empty? %>
+$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> Doctor modificado con exito").show();
+$('#doctor-modal').modal('hide');
+<% else %>
+alert('<%= @doctor.errors.full_messages[0] %>');
+<% end %>

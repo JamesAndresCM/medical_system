@@ -1,0 +1,7 @@
+<% if @prescription.errors.empty? %>
+$('#del_presciption_<%= @prescription.id %>').replaceWith(' <%= j render "prescription/prescription", prescription: @prescription %>');
+$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> Prescripción Médica modificada con exito").show();
+$('#prescription-modal').modal('hide');
+<% else %>
+alert('<%= @prescription.errors.full_messages[0] %>');
+<% end %>

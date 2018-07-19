@@ -1,0 +1,19 @@
+<h2 class="center mt-4">Mis Prescripciones Médicas</h2>
+<div class="mt-3 card shadow-style table-responsive">
+  <div class="card-body">
+    <table id="datatable_description" class="table table-hover table-responsive datatable-style-centered">
+      <thead>
+      <tr style="color: white; background-color: #2979ff">
+        <th>Rut Médico</th>
+        <th>Nombre Médico</th>
+        <th>Preescipción</th>
+        <th>Teléfono</th>
+        <th>Fecha</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render partial: "user_prescriptions/prescription_user", collection: @prescription_user %>
+      </tbody>
+    </table>
+  </div>
+</div>

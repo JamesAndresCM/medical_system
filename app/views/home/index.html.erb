@@ -1,5 +1,42 @@
-<h1 class="mt-3 center">Home</h1>
-<% unless current_user.nil? %>
-  <hr>
-<h3 class="mt-2 center">Wellcome <%= current_user.username %></h3>
-<% end %>
+<div class="mt-3 alert alert-success" role="alert" style="display: none;"></div>
+  <div class="container mt-4">
+  <div class="jumbotron col-md-9" style="float: left">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb" style="background-color: white">
+        <li class="breadcrumb-item active" style="color: gray; margin: auto" aria-current="page">Citas Médicas para esta Semana</li>
+      </ol>
+    </nav>
+    <div class="mt-3 table-responsive" style="border-radius: 10px">
+        <table id="datatable_user_week" class="text-capitalize table table-responsive datatable-style-centered" style="background-color: white;">
+          <thead>
+          <tr style="color: white; background-color: #2979ff">
+            <th>Rut</th>
+            <th>Nombre Doctor</th>
+            <th>Especialidad</th>
+            <th>Fecha</th>
+            <th>Hora Cita</th>
+          </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "home/user_appointment_today", collection: @user_appointment_today %>
+          </tbody>
+        </table>
+    </div>
+    <hr>
+    <p class="lead center">
+      <a href="<%= new_appointment_path %>" class="btn btn-success">Registrar Nueva Cita Médica</a>
+    </p>
+  </div>
+    <div class="col-md-3" style="float: right">
+      <nav aria-label="breadcrumb" style="width: 320px;">
+        <ol class="breadcrumb" style="background-color: #007bff">
+          <li class="breadcrumb-item active" style="color: white; margin: auto" aria-current="page">Doctores Recomendados</li>
+        </ol>
+      </nav>
+        <%= render partial: "home/user_index", collection: @user_index %>
+    </div>
+  </div>
+
+
+
+

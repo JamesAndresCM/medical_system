@@ -1,0 +1,10 @@
+<tr>
+  <td><%= user_appointment.rut %></td>
+  <td><%= user_appointment.username %></td>
+  <td><%= user_appointment.last_name %></td>
+  <td><%= user_appointment.last_name_mother %></td>
+  <td><%= user_appointment.phone_number %></td>
+  <td><%= user_appointment.name %></td>
+  <td><%= user_appointment.appointment_date %></td>
+  <td><%= user_appointment.start_time.to_s(:time) +"-"+ user_appointment.end_time.to_s(:time) %></td>
+</tr>

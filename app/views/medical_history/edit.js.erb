@@ -1,0 +1,4 @@
+$('<%= j render "form", medical_history: @medical_history, url: medical_card_medical_history_url, title: "Edit" %>').on('hidden.bs.modal', function (e) {
+    $(this).remove();
+    $('.modal-backdrop').remove();
+}).modal();

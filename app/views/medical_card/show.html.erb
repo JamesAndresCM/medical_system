@@ -1,0 +1,39 @@
+<div class="mt-3 alert alert-success" role="alert" style="display: none;"></div>
+<div class="mt-3 alert alert-danger" role="alert" style="display: none;"></div>
+<div class="container">
+<div class="card text-center mt-4 shadow-style" style="width: 20rem; display: inline-block; float: left">
+    <div class="card-header text-white bg-primary text-capitalize">
+      Ficha Médica <%= @medical_card.user.username %> <%= @medical_card.user.last_name %> <%= @medical_card.user.last_name_mother %>
+    </div>
+    <ul class="list-group list-group-flush text-capitalize">
+      <li class="list-group-item"><h6>Diagnostico: <%= @medical_card.diagnostico_user %></h6></li>
+      <li class="list-group-item"><h6>Ciudad: <%= @medical_card.ciudad %></h6></li>
+      <li class="list-group-item"><h6>Edad: <%= @medical_card.edad %> Años</h6></li>
+      <li class="list-group-item"><h6>Peso: <%= @medical_card.peso %> Kg</h6></li>
+      <li class="list-group-item"><h6>Estatura: <%= @medical_card.estatura %> Cm</h6></li>
+      <li class="list-group-item"><h6>Alergia: <%= @medical_card.alergia %></h6></li>
+    </ul>
+  <%= link_to "volver atras", appointments_path,class: "btn btn-sm btn-primary mt-2 mb-2" %>
+</div>
+<div class="mt-4 card shadow-style text-capitalize" style="float: right">
+  <div class="card-body">
+    <span style="margin: auto;display: table"><%= link_to "Crear Nueva Observación", new_medical_card_medical_history_path(medical_card_id: @medical_card.id), remote: true, class: "btn btn-sm btn-primary mb-2"%></span>
+    <div class="card-header mb-2 center">Historial Médico <%= @medical_card.user.username %> <%= @medical_card.user.last_name %> <%= @medical_card.user.last_name_mother %></div>
+      <table id="datatable_historial" class="table table-hover table-responsive" style="border-radius: 4px">
+        <thead>
+        <tr style="color: white; background-color: #2979ff;">
+          <th>Nombre Médico</th>
+          <th>Observación</th>
+          <th>Fecha</th>
+          <th>Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render partial: "medical_history/medical_history", collection: @medical_history %>
+        </tbody>
+      </table>
+  </div>
+</div>
+</div>
+
+

@@ -1,31 +1,36 @@
-<header class="navbar navbar-expand-lg navbar-light bg-light fixed-top nav-shadow">
-  <a class="navbar-brand" href="/">Base Rails 5</a>
+<header class="navbar navbar-expand-lg navbar-custom fixed-top nav-shadow">
+  <a class="navbar-brand" style="color: white" href="/">Sistema Médico</a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" style="background-color: white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-md-auto d-md-flex">
-      <li class="nav-item-active">
-        <a class="nav-link" href="#">Link public</a>
-      </li>
-      <% if user_signed_in? %>
+      <%= doctor_links %>
+      <% if user_signed_in? or doctor_signed_in? %>
         <%= usertype_helper%>
+        <%=  user_links %>
+        <% if user_signed_in? %>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link with session</a>
+          <a class="navbar-brand" href="<%= edit_user_path(current_user) %>" data-remote="true"><%= image_tag(current_user.avatar.url, class:"img_nav_profile") %>
+            <span class="username-span"><%= current_user.username %> <%= current_user.last_name %></span> <i style="color: white" class="fa fa-pencil-square-o"></i></a>
         </li>
+          <% elsif doctor_signed_in? %>
+          <li class="nav-item">
+            <a class="navbar-brand" href="<%= edit_doctor_path(current_doctor) %>" data-remote="true"><%= image_tag(current_doctor.avatar.url, class:"img_nav_profile") %>
+              <span class="username-span"><%= current_doctor.username %> <%= current_doctor.last_name %></span> <i style="color: white" class="fa fa-pencil-square-o"></i></a>
+          </li>
+        <%end%>
         <li class="nav-item">
-          <a class="navbar-brand" href="<%= edit_user_registration_path %>"><%= image_tag(current_user.avatar.url, class:"img_nav_profile") %>
-            <span class="username-span"><%= current_user.username %></span></a>
+          <a class="nav-link" data-method="delete" href="<%= destroy_user_session_path %>">Salir <i class="fa fa-sign-out"></i></a>
         </li>
-        <%= options_user %>
       <% else %>
         <li class="nav-item">
-          <a class="nav-link"  href="<%= new_user_session_path %>">Login</a>
+          <a class="nav-link"  href="<%= new_user_session_path %>">Ingreso Usuarios <i class="fa fa-sign-in"></i></a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-primary d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3"  href="<%= new_user_registration_path %>">Create Account</a>
+          <a class="nav-link"  href="<%= new_doctor_session_path %>">Ingreso Médicos <i class="fa fa-sign-in"></i></a>
         </li>
       <%end%>
     </ul>

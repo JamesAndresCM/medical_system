@@ -1,0 +1,57 @@
+<% if current_user && current_user.role != "admin" || current_doctor.present? %>
+  <%= link_to 'Registrar nueva cita', new_appointment_path, class: 'mt-3 btn btn-sm btn-success'%>
+
+  <h2 class="center">Mis Proximas Citas</h2>
+  <div class="mt-3 alert alert-success" role="alert" style="display: none;"></div>
+  <div class="mt-3 alert alert-danger" role="alert" style="display: none;"></div>
+  <% if current_user && current_user.role != "admin" %>
+    <%= select_month(0, {prompt: "Seleccione Mes a Buscar",use_month_names: %w(Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre), appointment_date: 'start'},html_options = { :class => "form-control col-md-3"})%>
+  <div class="mt-3 card shadow-style table-responsive">
+    <div class="card-body">
+      <table id="datatable_citas" class="table table-hover table-responsive datatable-style-centered">
+        <thead>
+        <tr style="color: white; background-color: #2979ff;">
+          <th>Rut</th>
+          <th>Médico</th>
+          <th>A.Paterno</th>
+          <th>A.Materno</th>
+          <th>Telefono</th>
+          <th>Especialidad</th>
+          <th>Día Cita</th>
+          <th>Hora Cita</th>
+        </tr>
+        </thead>
+        <tbody style="text-transform: capitalize">
+          <%= render partial: "user_appointment", collection: @user_appointments %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+    <% elsif current_doctor.present? %>
+    <div class="form-group date" >
+      Seleccione dia a buscar:
+      <input type="text" id="appointment_date_doctor" class="form-control col-md-2"/>
+    </div>
+    <div class="mt-3 card shadow-style table-responsive">
+      <div class="card-body">
+        <table id="datatable_citas" class="table table-hover table-responsive datatable-style-centered">
+          <thead>
+          <tr style="color: white; background-color: #2979ff;">
+            <th style="width: 80px">Rut</th>
+            <th>Paciente</th>
+            <th>A.Paterno</th>
+            <th>A.Materno</th>
+            <th>Contacto</th>
+            <th>Día Cita</th>
+            <th>Hora Cita</th>
+            <th>F.Médica</th>
+          </tr>
+          </thead>
+          <tbody style="text-transform: capitalize">
+            <%= render partial: "doctor_appointment", collection: @doctor_appointments %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <% end %>
+<% end %>

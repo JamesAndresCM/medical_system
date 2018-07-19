@@ -17,6 +17,9 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
+//= require datatables
+//= require moment
+//= require daterangepicker
 //= require_tree .
 
 $(document).ready(function(){

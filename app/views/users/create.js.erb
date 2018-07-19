@@ -1,0 +1,7 @@
+<% if @user.errors.empty? %>
+$("#datatable_user").prepend("<%= j render "admin/dashboard/user", user: @user %>")
+$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> User creado con exito").show();
+$('#user-modal').modal('hide');
+<% else %>
+alert('<%= @user.errors.full_messages[0] %>');
+<% end %>

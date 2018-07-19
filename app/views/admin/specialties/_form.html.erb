@@ -1,0 +1,22 @@
+<div id="specialty-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <legend><%= title %> Especialidad Médica</legend>
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+      </div>
+      <%= form_for(specialty, url: url, remote: true, html: {class:'container'}) do |f| %>
+        <div class="form-group">
+          <b><%= f.label :especialidad_medica, class: 'col-form-label' %>: </b>
+          <%= f.text_field :name,autofocus: true, class:'form-control',required: true %>
+          <small>especialidad médica. Ejemplo: (Psiquiatra.)</small>
+        </div>
+        <div class="actions" style="text-align: center">
+          <%= f.submit "#{title} Especialidad",class: 'btn btn-sm btn-success' %>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>

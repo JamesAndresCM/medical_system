@@ -1,0 +1,2 @@
+module MedicalCardHelper
+end

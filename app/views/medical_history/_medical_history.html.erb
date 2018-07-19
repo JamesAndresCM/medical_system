@@ -1,0 +1,12 @@
+
+<tr id="medical_history_<%=medical_history.id%>">
+  <td> <%= medical_history.doctor.username %></td>
+  <td><%= sanitize medical_history.body[0..30].capitalize, tags: %w(strong em a p b), attributes: %w(href) %>...</td>
+  <td><%= medical_history.created_at.strftime("%d-%m-%Y") %></td>
+  <td style="text-align: center"><%= link_to fa_icon("address-book",style: "margin: 5px"), medical_card_medical_history_path(medical_history.medical_card_id, medical_history), remote: true, style: 'color: gray' %>
+    <%= link_to fa_icon("pencil-square-o", style: "margin: 5px"), edit_medical_card_medical_history_path(medical_history.medical_card_id, medical_history), remote: true %>
+  <% if current_doctor.id.eql?(medical_history.doctor_id) %>
+      <%= link_to fa_icon("trash") ,medical_card_medical_history_path(medical_history.medical_card_id, medical_history), remote: true, method: :delete, style: 'color: red', data: { confirm: 'Desea eliminar?' } %>
+  <% end %>
+  </td>
+</tr>

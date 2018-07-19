@@ -1,27 +1,38 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  #callback para que se inserte el id del user al crearse en la tabla role
-  before_create :set_default_role
+  # enum para tipo de usuario, user => "patient", admin => administrator
+  enum role: [:user, :admin]
+
+  # uploader avatar
   mount_uploader :avatar, AvatarUploader
-  devise :database_authenticatable, :registerable,
+
+  # remuevo registro devise
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :username, presence: true, uniqueness: true, length:  {in: 3..12}
-  validates :email, presence: true, uniqueness: true
-  #validates :avatar, presence: true
-  #validates :cover, presence: true
+  # validaciones
+  validates :username, presence: true, uniqueness: true, length: { in: 3..12 },
+                       format: { with: /\A[a-zA-Z ]+\z/, message: 'Solo letras' }
+  validates :email, presence: true, uniqueness: true, format: {:with => Devise::email_regexp, message: 'Email no valido'}
+  validates :last_name, presence: true, length: { in: 1..12 }, format: { with: /\A[a-zA-Z]+\z/, message: 'Solo letras' }
+  validates :last_name_mother, presence: true, length: { in: 1..12 }, format: { with: /\A[a-zA-Z]+\z/, message: 'Solo letras' }
+  validates :phone_number, presence: true, format: {with: /\A[9]\d{8}/, message: 'Solo 9 numeros'}
+  validates_presence_of :role
+  validates :rut, rut: true, uniqueness: true
 
-  #un usuario puede tener un solo rol
-  has_one :role, dependent: :destroy
+  # relaciones
+  has_many :appointments, dependent: :destroy
+  has_many :doctors, through: :appointments
 
- #se inserta el id del usuario al ser este creado
-  private
-  def set_default_role
-    self.role ||= Role.create()
-  end
+  has_many :prescriptions, dependent: :destroy
+  has_many :doctors, through: :prescriptions
 
+  has_one :medical_card, dependent: :destroy
+
+  # ordeno registros
+  scope :ordenados, -> { order('created_at DESC')}
+
+  # valido tamaño imagen
   def avatar_size_validation
-    errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes
+    errors[:avatar] << 'error tamaño debe ser menor a 500KB' if avatar.size > 0.5.megabytes
   end
 end

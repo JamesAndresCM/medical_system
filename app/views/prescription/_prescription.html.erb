@@ -1,0 +1,13 @@
+<tr id="del_presciption_<%=prescription.id %>" class="text-capitalize">
+  <td><%= prescription.user.rut %></td>
+  <td><%= prescription.user.username %> <%= prescription.user.last_name%> <%= prescription.user.last_name_mother%></td>
+  <td><%= prescription.doctor.username %> <%= prescription.doctor.last_name %> <%= prescription.doctor.last_name_mother %></td>
+  <td><%= prescription.descripcion %></td>
+  <td><%= prescription.created_at.strftime("%d-%m-%Y") %></td>
+  <td style="text-align: center">
+    <%= link_to fa_icon("address-book",style: "margin: 5px"), doctor_prescription_path(prescription.doctor.id, prescription.id), remote: true,style: 'color: gray' %>
+    <%= link_to fa_icon("trash") ,doctor_prescription_path(prescription.doctor.id, prescription.id), remote: true, method: :delete, style: 'color: red', data: { confirm: 'Desea eliminar?' } %>
+    <%= link_to fa_icon("pencil-square-o", style: "margin: 5px"), edit_doctor_prescription_path(prescription.doctor.id, prescription.id), remote: true %>
+    <%= link_to fa_icon("file"), doctor_prescription_pdf_path(prescription.doctor.id, prescription.id,format: :pdf), target: "blank" %></td>
+  </td>
+</tr>

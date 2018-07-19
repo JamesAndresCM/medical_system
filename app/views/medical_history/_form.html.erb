@@ -1,0 +1,25 @@
+<div id="medical-history-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title right"><%= title %> Historial Médico</h4>
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+      </div>
+        <%= form_for(medical_history, url: url, remote: true, html: {class:'container col-md-10'}) do |f| %>
+            <div class="form-group">
+              <%= f.label :observacion_paciente, class: 'col-8 col-form-label' %>
+              <%= f.text_area :body, rows: 10,autofocus: true, placeholder: 'Escriba aquí la observación..' ,class:'form-control', required: true %>
+            </div>
+            <hr>
+            <% if controller.action_name.eql?("new") %>
+              <%= f.hidden_field :medical_card_id, :value => params[:medical_card_id] %>
+            <%end%>
+            <div class="actions" style="text-align: center">
+              <%= f.submit "#{title} observacion",class: 'btn btn-sm btn-success' %>
+            </div>
+        <%end%>
+    </div>
+  </div>
+</div>

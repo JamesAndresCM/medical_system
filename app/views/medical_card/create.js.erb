@@ -1,0 +1,6 @@
+<% if @medical_card.errors.empty? %>
+$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> Ficha creada con exito").show();
+$('#medical-modal').modal('hide');
+<% else %>
+alert('<%= @medical_card.errors.full_messages[0] %>');
+<% end %>

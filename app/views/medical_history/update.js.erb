@@ -1,0 +1,7 @@
+<% if @medical_history.errors.empty? %>
+$('#medical_history_<%= @medical_history.id %>').replaceWith(' <%= j render "medical_history/medical_history", medical_history: @medical_history %>');
+$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> Observación modificada con exito").show();
+$('#medical-history-modal').modal('hide');
+<% else %>
+alert('<%= @medical_history.errors.full_messages[0] %>');
+<% end %>

@@ -1,0 +1,58 @@
+<div class="col-sm-6 mt-4 shadow-style" style="margin: auto">
+  <%= form_for(time_slot, url: url,  html: {class:"card"}) do |f| %>
+      <div class="card-header center">
+        <b>Crear nuevo horario</b>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+      <div class="form-group date" >
+        <b><%= f.label :seleccione_rango_para_su_horario %></b><br />
+        <%= f.text_field :time_slot_date,placeholder: 'dd/mm/yyyy', class:'form-control daterange col-sm-6' %>
+        <small class="form-text text-muted">
+          hace alusión a rangos de días para los cuales se creará el horario.
+        </small>
+      </div>
+        </li>
+        <li class="list-group-item">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <b><%= f.label :seleccione_hora_de_inicio %></b>
+          <%= f.select :start_time, options_for_select(TimeSlot.horas.keys.map{|t| [t+ ' horas',t]}), {prompt: '--:--'},{class: 'form-control col-sm-6',:required => true} %>
+          <small class="form-text text-muted">
+            inicio jornada de trabajo.
+          </small>
+      </div>
+
+      <div class="form-group col-md-6">
+        <b><%= f.label :seleccione_hora_de_termino %></b>
+        <%= f.select :end_time ,{}, {prompt: '--:--'},{class: 'form-control col-sm-6',:required => true} %>
+        <small class="form-text text-muted">
+          fin jornada de trabajo.
+        </small>
+      </div>
+    </div>
+        </li>
+        <li class="list-group-item">
+      <div class="form-row">
+      <div class="form-group col-md-6">
+        <b><%= f.label :seleccione_hora_de_almuerzo %></b>
+        <%= f.select :lunch_hour ,{}, {prompt: '--:--'},{class: 'form-control col-sm-6',:required => true} %>
+        <small class="form-text text-muted">
+          inicio hora de almuerzo (2 horas).
+        </small>
+      </div>
+      <div class="form-group col-md-6">
+        <b><%= f.label :seleccione_intervalo_de_trabajo %></b>
+        <%= f.select :work_interval ,options_for_select(TimeSlot.intervals.keys.map{ |x| [x+' minutos',x]}), {prompt: '--:--'},{class: 'form-control col-sm-6',:required => true} %>
+        <small class="form-text text-muted">
+          minutos de atencion por paciente.
+        </small>
+      </div>
+      </div>
+        </li>
+      </ul>
+      <div class="actions center card-footer">
+        <%= f.submit "Crear nuevo horario",class: 'btn btn-sm btn-success' %>
+      </div>
+  <%end%>
+  </div>

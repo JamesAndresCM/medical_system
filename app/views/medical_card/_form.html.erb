@@ -1,0 +1,66 @@
+<div id="medical-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <legend><%= title %> Ficha Médica</legend>
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+      </div>
+        <%= form_for(medical_card, url: url, remote: true, html: {class:'container col-md-10'}) do |f| %>
+          <div class="form-group row">
+            <%= f.label :diagnostico_paciente, class: 'col-6 col-form-label' %>
+            <div class="col-6">
+              <%= f.text_field :diagnostico_user, autofocus: true, class:'form-control', required: true %>
+              <small>breve diagnostico ejemplo: (cefalea constante)</small>
+            </div>
+          </div>
+        <hr>
+          <div class="form-group row">
+            <%= f.label :ciudad, class: 'col-4 col-form-label' %>
+            <div class="col-8">
+              <%= f.text_field :ciudad, autofocus: true, class:'form-control', required: true %>
+            </div>
+          </div>
+        <hr>
+          <div class="form-group row">
+            <%= f.label :edad_paciente, class: 'col-6 col-form-label' %>
+            <div class="col-3">
+              <%= f.number_field :edad, autofocus: true, class:'form-control', required: true %>
+            </div>
+            <div class="col-1">años</div>
+          </div>
+        <hr>
+          <div class="form-group row">
+            <%= f.label :peso_paciente, class: 'col-6 col-form-label' %>
+            <div class="col-3">
+              <%= f.number_field :peso, autofocus: true, class:'form-control', required: true, step: :any %>
+            </div>
+            <div class="col-1">Kg</div>
+          </div>
+        <hr>
+          <div class="form-group row">
+            <%= f.label :estatura_paciente, class: 'col-6 col-form-label' %>
+            <div class="col-3">
+              <%= f.number_field :estatura, autofocus: true, class:'form-control', required: true, step: :any %>
+            </div>
+            <div class="col-1">Cm</div>
+          </div>
+        <hr>
+          <div class="form-group row">
+            <%= f.label :alergia_paciente, class: 'col-5 col-form-label' %>
+            <div class="col-7">
+              <%= f.text_field :alergia, autofocus: true, class:'form-control', required: true %>
+              <small>especifique si paciente presenta alergia en breves palabras</small>
+            </div>
+          </div>
+            <% unless controller.action_name.eql?("edit") %>
+            <%= f.hidden_field :user_id, :value => params[:user_id] %>
+              <%end%>
+            <div class="actions" style="text-align: center">
+              <%= f.submit "#{title} ficha",class: 'btn btn-sm btn-success' %>
+            </div>
+        <%end%>
+    </div>
+  </div>
+</div>

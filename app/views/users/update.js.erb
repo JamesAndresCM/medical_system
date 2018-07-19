@@ -1,0 +1,10 @@
+<% if @user.errors.empty? && current_user.admin? %>
+$('#del_user_<%= @user.id %>').replaceWith(' <%= j render "admin/dashboard/user", user: @user %>');
+$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> User modificado con exito").show();
+$('#user-modal').modal('hide');
+<% elsif @user.errors.empty? %>
+$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> User modificado con exito").show();
+$('#user-modal').modal('hide');
+<% else %>
+alert('<%= @user.errors.full_messages[0] %>');
+<% end %>

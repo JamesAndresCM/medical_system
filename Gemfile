@@ -43,6 +43,15 @@ gem 'rails_admin', '~> 1.2'
 gem 'will_paginate'
 gem 'friendly_id', '~> 5.1.0'
 gem 'rename'
+gem 'font-awesome-rails', '~> 4.3'
+gem 'jquery-datatables'
+gem 'bootstrap-datepicker-rails'
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'rut_validation'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

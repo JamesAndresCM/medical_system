@@ -1,0 +1,27 @@
+<div class="card" style="width: 20rem;">
+  <div class="card-header">
+    <h6 class="card-title text-capitalize">Doctor : <%= user_index.username %> <%= user_index.last_name %> <%= user_index.last_name_mother %></h6>
+  </div>
+  <%= image_tag user_index.doctor.avatar, class: 'mt-2 mx-auto d-block img_nav_profile', alt: 'Card image cap' %>
+  <span class="center mt-2">Cantidad Atenciones : <%= user_index.maximo %></span>
+  <span class="center mt-2 text-capitalize">Especialidad : <%= user_index.name %></span>
+  <div class="card-body center">
+      <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#collapseMajor_<%= user_index.doctor_id %>" aria-expanded="false" aria-controls="collapseMajor">
+        Ver detalles Médico
+      </button>
+      <div class="mt-3 collapse" id="collapseMajor_<%= user_index.doctor_id %>">
+          <ul class="list-group ml-1 mb-1">
+            <li class="list-group-item">
+              <b>Rut: </b> <%= user_index.rut %>
+            </li>
+            <li class="list-group-item">
+              <b>Contacto: </b> <%= user_index.email %>
+            </li>
+            <li class="list-group-item">
+              <b>Telefono: </b> <%= user_index.phone_number %>
+            </li>
+          </ul>
+      </div>
+  </div>
+</div>
+<br>

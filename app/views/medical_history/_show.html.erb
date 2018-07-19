@@ -1,0 +1,28 @@
+<div id="medical-history-show" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container text-right">
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+      </div>
+      <div class="container col-md-12 modal-style">
+        <div class="card">
+          <div class="card-header text-capitalize">
+            Paciente <%= @medical_history.medical_card.user.username %> <%= @medical_history.medical_card.user.last_name %> <%= @medical_history.medical_card.user.last_name_mother %>
+          </div>
+          <div class="card-header text-capitalize">
+            Doctor <%= @medical_history.doctor.username %> <%= @medical_history.doctor.last_name %> <%= @medical_history.doctor.last_name_mother %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Observación </h5>
+            <p class="card-text justify"><%= @medical_history.body %></p>
+          </div>
+          <div class="card-footer text-muted">
+            <b> Fecha: </b><%= @medical_history.created_at.strftime("%d-%m-%Y")%>
+          </div>
+        </div>
+          </div>
+      </div>
+    </div>
+  </div>

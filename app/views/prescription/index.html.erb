@@ -1,0 +1,23 @@
+<%= link_to 'Registrar Nueva Prescripción Médica', new_doctor_prescription_path,remote: true, class: 'mt-3 btn btn-sm btn-success'%>
+<h2 class="center">Prescripciones Médicas</h2>
+<div class="mt-3 alert alert-success" role="alert" style="display: none;"></div>
+<div class="mt-3 alert alert-danger" role="alert" style="display: none;"></div>
+<div class="mt-3 card shadow-style table-responsive">
+  <div class="card-body">
+    <table id="datatable_description" class="table table-hover table-responsive datatable-style-centered">
+      <thead>
+      <tr style="color: white; background-color: #2979ff">
+        <th>Rut Paciente</th>
+        <th>Nombre Paciente</th>
+        <th>Nombre Medico</th>
+        <th>Preescipcion</th>
+        <th>Fecha</th>
+        <th>Opciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render partial: "prescription/prescription", collection: @prescription %>
+      </tbody>
+    </table>
+  </div>
+</div>

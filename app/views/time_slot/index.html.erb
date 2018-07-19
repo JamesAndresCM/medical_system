@@ -1,0 +1,25 @@
+<%= link_to 'Registrar Nuevo Horario', new_doctor_time_slot_path, class: 'mt-3 btn btn-sm btn-success'%>
+<h2 class="center">Mis Horarios</h2>
+<div class="mt-3 alert alert-success" role="alert" style="display: none;"></div>
+<div class="mt-3 alert alert-danger" role="alert" style="display: none;"></div>
+  <div class="mt-3 card shadow-style table-responsive">
+    <div class="card-body">
+      <table id="datatable_horario" class="table table-hover table-responsive datatable-style-centered">
+        <thead>
+        <tr style="color: white; background-color: #2979ff">
+          <th>Nombre Doctor</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>Fecha Horario</th>
+          <th>Hora Inicio</th>
+          <th>Hora Termino</th>
+          <th>Estado</th>
+          <th>Eliminar Horario</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render partial: "time_slot/time_slot", collection: @time_slot %>
+        </tbody>
+      </table>
+    </div>
+  </div>

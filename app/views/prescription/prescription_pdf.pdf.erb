@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <%= wicked_pdf_stylesheet_link_tag "pdf" -%>
+</head>
+<body>
+<div id="content">
+  <h3 style="border: 1px solid #ccc;
+      color: black;
+      text-align: center; border-radius: 4px">Prescripcion Médica</h3>
+  <br>
+  <br>
+    <div class="card">
+      <div class="card-header">
+      <b> Fecha: </b><%= @prescription.created_at.strftime("%d/%m/%Y")%>
+      </div>
+      <div class="card-header text-capitalize">
+        <b>Rut Paciente :</b> <%= @prescription.user.rut %>
+      </div>
+      <div class="card-header text-capitalize">
+        <b>Paciente :</b> <%= @prescription.user.username %> <%= @prescription.user.last_name %> <%= @prescription.user.last_name_mother %>
+      </div>
+      <div class="card-header text-capitalize">
+        <b>Ciudad :</b> <%= @prescription.user.medical_card.ciudad %>
+      </div>
+      <div class="card-header text-capitalize">
+        <b>Edad :</b> <%= @prescription.user.medical_card.edad %> Años
+      </div>
+      <div class="card-header text-capitalize">
+        <b>Nº Ficha :</b> <%= @prescription.user.medical_card.id %>
+      </div>
+      <div class="card-header text-capitalize">
+        <b>Doctor : </b><%= @prescription.doctor.username %> <%= @prescription.doctor.last_name %> <%= @prescription.doctor.last_name_mother %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><b>Prescripción Médica </b></h5>
+        <p class="card-text justify;" style="height: 200px"><%= @prescription.descripcion %></p>
+      </div>
+    </div>
+  <br>
+  <br>
+  <div style="float: right">
+    <h4><%= @prescription.doctor.username %></h4>
+    <hr>
+    <b>Firma Médico</b>
+    </div>
+  <div style="float: left">
+    <h4><%= @prescription.doctor.username %></h4>
+    <hr>
+    <b>Timbre Institución</b>
+  </div>
+</div>
+</body>
+</html>

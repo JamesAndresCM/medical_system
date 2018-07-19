@@ -1,0 +1,11 @@
+<tr id="del_time_slot_<%=time_slot.id %>" class="text-capitalize">
+  <td><%= time_slot.doctor.username %></td>
+  <td><%= time_slot.doctor.last_name %></td>
+  <td><%= time_slot.doctor.last_name_mother %></td>
+  <td><%= time_slot.time_slot_date.strftime("%d-%m-%Y") %></td>
+  <td><%= time_slot.start_time.strftime("%H:%M") %></td>
+  <td><%= time_slot.end_time.strftime("%H:%M") %></td>
+  <td><% if time_slot.availability.eql?(true) %>Disponible</td>
+  <td class="center"><%= link_to fa_icon("trash"), doctor_time_slot_path(time_slot.doctor_id,time_slot.id) , remote: true, method: :delete, style: 'color: red', data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+</tr>

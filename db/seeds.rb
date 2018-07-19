@@ -11,22 +11,63 @@ User.create!([{
                email: 'admin@domain.com',
                username: 'admin',
                password: 'admin123',
-               password_confirmation: 'admin123'
+               password_confirmation: 'admin123',
+               last_name: 'name',
+               last_name_mother: 'less',
+               phone_number: '976542378',
+               rut: '6316035-0',
+               role: 1
              },
               {
-                email: 'supervisor@domain.com',
-                username: 'supervisor',
-                password: 'supervisor123',
-                password_confirmation: 'supervisor123'
-              },
-              {
-                email: 'user@domain.com',
-                username: 'user',
-                password: 'user123',
-                password_confirmation: 'user123'
+                email: 'paciente@domain.com',
+                username: 'andres',
+                password: 'paciente123',
+                password_confirmation: 'paciente123',
+                last_name: 'perez',
+                last_name_mother: 'reyes',
+                phone_number: '976542371',
+                rut: '24047408-5',
+                role: 0
               }])
 
-Role.find_by(user_id: 1).update(superadmin_role: true)
-Role.find_by(user_id: 2).update(supervisor_role: true)
-
-p "Created #{User.count} users"
+Specialty.create!([{
+                    name: 'neurologo'
+                  },
+                   {
+                     name: 'psiquiatra'
+                   },
+                   {
+                     name: 'psicologo'
+                   },
+                   {
+                     name: 'obstetra'
+                   },
+                   {
+                     name: 'pediatra'
+                   },
+                   {
+                     name: 'oftalmologo'
+                   },
+                   {
+                     name: 'dentista'
+                   },
+                   {
+                     name: 'ginecologo'
+                   },
+                   {
+                     name: 'dermatologo'
+                   },
+                   {
+                     name: 'kinesiologo'
+                   }])
+Doctor.create(
+  email: 'doctor@domain.com',
+  username: 'juan',
+  password: 'doctor123',
+  password_confirmation: 'doctor123',
+  last_name: 'perez',
+  last_name_mother: 'villa',
+  phone_number: '976542377',
+  rut: '10392173-2',
+  specialty_id: 1
+)
