@@ -1,14 +1,8 @@
-# Base para Rails 5
-
-# TL;DR
-Autenticación, autorización, + scaffold personalizado con bootstrap
+# Simple Sistema Medico
 
 # Instalación
-Luego de clonar el proyecto :
 
 * bundle install
-
-* configurar usuario y base de dato en el archivo config/database.yml , luego iniciar servicio postgresql
 
 * rails db:create
 
@@ -18,8 +12,8 @@ Luego de clonar el proyecto :
 
 * rails server
 
-3 tipos de usuarios, admin, supervisor y usuario normal.
+3 tipos de usuarios.
 
 * admin@domain.com , contraseña : admin123
-* supervisor@domain.com , contraseña : supervisor123
-* user@domain.com, contraseña : user123
+* doctor@domain.com , contraseña : doctor123
+* paciente@domain.com, contraseña : paciente123
