@@ -11,10 +11,8 @@ module Clinic
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
-    config.assets.compile = true
-
     config.time_zone = 'Santiago'
-    config.active_record.default_timezone = 'Santiago'
+    config.active_record.default_timezone = :local
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
