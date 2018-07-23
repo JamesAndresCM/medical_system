@@ -1,8 +1,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
-  password: password_here
+  host: <%= ENV['DB_HOST'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_POSTGRES_PASSWORD'] %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -22,4 +24,4 @@ production:
   <<: *default
   database: clinic_production
   username: start_rails
-  password: <%= ENV['START_RAILS_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DB_POSTGRES_PASSWORD'] %>
