@@ -12,7 +12,7 @@ class Appointment < ApplicationRecord
 
   # ordeno registros
   scope :ordenados, -> {order(appointment_date: :desc)}
-  scope :week_appointments, -> {where("appointment_date <= ?", Date.today.at_end_of_week)}
+  scope :week_appointments, -> {where(:appointment_date => Date.today.at_beginning_of_week..Date.today.at_end_of_week)}
 
   # metodo que recibe hash extra retorna tipo de usuario + fecha
   # TODO: fix this or refactor
