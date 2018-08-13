@@ -1,0 +1,12 @@
+<legend>Estimado <%= @appointment.user.username.capitalize %> <%= @appointment.user.last_name.capitalize %></legend>
+
+<p>
+  Su cita médica ha sido registrada exitosamente para el día <%= @appointment.appointment_date.strftime("%d/%m/%Y") %>
+  a las <%= @appointment.time_slot.start_time.to_s(:time) %> Horas, con el <%= @appointment.doctor.specialty.name.capitalize %> : <%= @appointment.doctor.username.capitalize %> <%= @appointment.doctor.last_name.capitalize %>
+</p>
+<br>
+
+<legend>Saludos Cordiales</legend>
+<p>
+  Curicó , <%= Date.current.strftime("%d/%m/%Y") %>
+</p>

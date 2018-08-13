@@ -50,6 +50,9 @@ class AppointmentsController < ApplicationController
   def create
     if current_user&.user?
       @appointment = current_user.appointments.create(appointment_params)
+      # only mail not job -> AppointmentMailer.received_patient(@appointment).deliver_later
+      # job to send email
+      # AppointmentMailJob.set(wait: 20.seconds).perform_later(@appointment)
     elsif current_doctor.present?
       @appointment = current_doctor.appointments.create(appointment_params)
     end
