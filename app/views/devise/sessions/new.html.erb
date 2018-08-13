@@ -1,3 +1,10 @@
+<%= devise_error_messages! %>
+<% flash.each do |key, value| %>
+  <p id="notice" style="text-align: center" class="mt-4 alert alert-danger flash <%= key %>">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+    <%= value %>
+  </p>
+<% end %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 	<div class="container">
     </br>
