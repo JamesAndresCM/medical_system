@@ -26,6 +26,19 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  Clinic::Application.configure do
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        address: 'smtp.gmail.com',
+        port: 587,
+        domain: 'gmail.com',
+        authentication: 'plain',
+        user_name: 'email_address',
+        password: 'password',
+        enable_starttls_auto: true
+    }
+  end
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
