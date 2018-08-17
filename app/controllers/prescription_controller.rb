@@ -48,7 +48,7 @@ class PrescriptionController < ApplicationController
   private
 
   def prescription_patients
-    @patients = current_doctor.appointments.ordenados.to_a.uniq(&:user_id)
+    @patients = current_doctor.appointments.ordenados.joins(:user => :medical_card).to_a.uniq(&:user_id)
   end
 
   def set_prescription
