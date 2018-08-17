@@ -27,9 +27,11 @@ Rails.application.routes.draw do
 
   resources :appointments do
     collection do
-      get 'doctor_specialty/:specialty_id', to: 'appointments#doctor_specialty', as: 'doctor_specialty'
-      get 'availability_slot/:time_slot_id/:appointment_date', to: 'appointments#availability_slot', as: 'availability_slot'
-      get 'get_date_range/:appointment_date', to: 'appointments#get_date_range', as: 'get_date_range'
+      scope controller: :appointments do
+          get 'doctor_specialty/:specialty_id' => :doctor_specialty, as: 'doctor_specialty'
+          get 'availability_slot/:time_slot_id/:appointment_date' => :availability_slot, as: 'availability_slot'
+          get 'get_date_range/:appointment_date' => :get_date_range, as: 'get_date_range'
+      end
       resources :medical_card do
         resources :medical_history
       end
@@ -42,8 +44,10 @@ Rails.application.routes.draw do
     resources :doctors
     get 'user_prescriptions/:user_id', to: 'user_prescriptions#index', as: 'user_prescription'
     namespace :admin do
-      get 'users', to: 'dashboard#index', as: 'dashboard_users'
-      get 'doctors', to: 'dashboard#index_doctors', as: 'dashboard_doctors'
+      scope controller: :dashboard do
+        get 'users' => :index, as: 'dashboard_users'
+        get 'doctors' => :index_doctors , as: 'dashboard_doctors'
+      end
       resources :specialties
     end
     root to: 'home#index'
