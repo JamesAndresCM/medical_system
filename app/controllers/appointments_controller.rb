@@ -83,6 +83,6 @@ class AppointmentsController < ApplicationController
 
   def data
     @specialties = Specialty.all
-    @users = User.all
+    @users = User.where.not(role: "admin")
   end
 end
