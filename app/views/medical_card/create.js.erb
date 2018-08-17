@@ -1,5 +1,6 @@
 <% if @medical_card.errors.empty? %>
 $('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> Ficha creada con exito").show();
+$('#user_mc_<%= @medical_card.user_id %>').replaceWith("<td style='text-align: center'><a style='color: gray' href='<%= medical_card_path(@medical_card.id) %>'><i style='margin: 5px' class='fa fa-address-book'></i></a><a data-remote='true' href='<%= edit_medical_card_path(@medical_card.id) %>'><i style='margin: 5px' class='fa fa-pencil-square-o'></i></a></td>");
 $('#medical-modal').modal('hide');
 <% else %>
 alert('<%= @medical_card.errors.full_messages[0] %>');
