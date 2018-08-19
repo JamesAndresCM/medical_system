@@ -51,6 +51,7 @@ gem 'bootstrap-daterangepicker-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'rut_validation'
+gem 'figaro'
 
 
 group :development, :test do
