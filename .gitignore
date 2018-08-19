@@ -21,3 +21,6 @@
 .idea/workspace.xml
 /config/database.yml
 /public/system/
+
+# Ignore application configuration
+#/config/application.yml
