@@ -38,7 +38,7 @@ class Ability
       can :manage, :dashboard
     elsif user.user?
       can :crud, User, id: user.id
-      can :crud ,Appointment, id: user.id
+      can :crud ,Appointment, user_id: user.id
       can :read, :user_prescription
       can :doctor_specialty, Appointment
       can :availability_slot, Appointment
